@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// The position of the camera.
 class CameraPosition extends Equatable {
