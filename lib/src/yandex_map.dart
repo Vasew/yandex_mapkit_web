@@ -384,8 +384,8 @@ class _YandexMapState extends State<YandexMap> {
   }
 }
 
-/// Configuration options for the YandexMapWeb native view.
-class _YandexMapWebOptions {
+/// Configuration options for the YandexMap native view.
+class _YandexMapOptions {
   _YandexMapOptions.fromWidget(YandexMap map) :
     tiltGesturesEnabled = map.tiltGesturesEnabled,
     zoomGesturesEnabled = map.zoomGesturesEnabled,
