@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// Interface for the Bicycle router.
 class YandexBicycle {
