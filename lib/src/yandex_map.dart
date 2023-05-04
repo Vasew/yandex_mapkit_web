@@ -164,8 +164,8 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   void _updateMapOptions() async {
-    final newOptions = _YandexMapWebOptions.fromWidget(widget);
-    final updates = _yandexMapWebOptions.mapUpdates(newOptions);
+    final newOptions = _YandexMapOptions.fromWidget(widget);
+    final updates = _yandexMapOptions.mapUpdates(newOptions);
 
     if (updates.isEmpty) {
       return;
@@ -175,7 +175,7 @@ class _YandexMapState extends State<YandexMap> {
 
     // ignore: unawaited_futures
     controller._updateMapOptions(updates);
-    _yandexMapWebOptions = newOptions;
+    _yandexMapOptions = newOptions;
   }
 
   void _updateMapObjects() async {
@@ -361,7 +361,7 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   Future<void> _onPlatformViewCreated(int id) async {
-    final controller = await YandexMapWebController._init(id, this);
+    final controller = await YandexMapController._init(id, this);
 
     _controller.complete(controller);
 
@@ -371,7 +371,7 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   Map<String, dynamic> _creationParams() {
-    final mapOptions = _yandexMapWebOptions.toJson();
+    final mapOptions = _yandexMapOptions.toJson();
     final mapObjects = MapObjectUpdates.from(
       {_mapObjectCollection.copyWith(mapObjects: [])},
       {_mapObjectCollection}
