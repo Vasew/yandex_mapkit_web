@@ -119,7 +119,7 @@ class YandexMapWeb extends StatefulWidget {
   _YandexMapState createState() => _YandexMapState();
 }
 
-class _YandexMapState extends State<YandexMap> {
+class _YandexMapState extends State<YandexMapWeb> {
   late _YandexMapOptions _yandexMapOptions;
 
   /// Root object which contains all [MapObject] which were added to the map by user
@@ -157,7 +157,7 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   @override
-  void didUpdateWidget(YandexMap oldWidget) {
+  void didUpdateWidget(YandexMapWeb oldWidget) {
     super.didUpdateWidget(oldWidget);
     _updateMapOptions();
     _updateMapObjects();
@@ -349,7 +349,7 @@ class _YandexMapState extends State<YandexMap> {
       frame.append(scriptElement);
       frame.append(styleElement);
 
-      var registerYandexMapId = '${YandexMap._viewType}_$randomNumber';
+      var registerYandexMapId = '${YandexMapWeb._viewType}_$randomNumber';
 
       // ignore: undefined_prefixed_name
       ui.platformViewRegistry.registerViewFactory(
@@ -384,7 +384,7 @@ class _YandexMapState extends State<YandexMap> {
 
 /// Configuration options for the YandexMap native view.
 class _YandexMapOptions {
-  _YandexMapOptions.fromWidget(YandexMap map) :
+  _YandexMapOptions.fromWidget(YandexMapWeb map) :
     tiltGesturesEnabled = map.tiltGesturesEnabled,
     zoomGesturesEnabled = map.zoomGesturesEnabled,
     rotateGesturesEnabled = map.rotateGesturesEnabled,
