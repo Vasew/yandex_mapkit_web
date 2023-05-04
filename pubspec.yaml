@@ -15,7 +15,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.unact.yandexmapkitweb
+        package: com.vasew.yandexmapkitweb
         pluginClass: YandexMapkitWebPlugin
       ios:
         pluginClass: YandexMapkitWebPlugin
