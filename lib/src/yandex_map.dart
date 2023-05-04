@@ -1,9 +1,9 @@
 part of yandex_mapkit_web;
 
 /// A widget which displays a map using Yandex maps service.
-class YandexMap extends StatefulWidget {
-  /// A `Widget` for displaying Yandex Map
-  const YandexMap({
+class YandexMapWeb extends StatefulWidget {
+  /// A `Widget` for displaying Yandex Map Web
+  const YandexMapWeb({
     Key? key,
     this.gestureRecognizers = const <Factory<OneSequenceGestureRecognizer>>{},
     this.mapObjects = const [],
@@ -29,7 +29,7 @@ class YandexMap extends StatefulWidget {
     this.onObjectTap
   }) : super(key: key);
 
-  static const String _viewType = 'yandex_mapkit/yandex_map';
+  static const String _viewType = 'yandex_mapkit_web/yandex_map_web';
 
   /// Which gestures should be consumed by the map.
   ///
@@ -80,20 +80,20 @@ class YandexMap extends StatefulWidget {
 
   /// Callback method for when the map is ready to be used.
   ///
-  /// Pass to [YandexMap.onMapCreated] to receive a [YandexMapController] when the
+  /// Pass to [YandexMapWeb.onMapCreated] to receive a [YandexMapWebController] when the
   /// map is created.
   final MapCreatedCallback? onMapCreated;
 
-  /// Called every time a [YandexMap] is tapped.
+  /// Called every time a [YandexMapWeb] is tapped.
   final ArgumentCallback<Point>? onMapTap;
 
-  /// Called every time a [YandexMap] is long tapped.
+  /// Called every time a [YandexMapWeb] is long tapped.
   final ArgumentCallback<Point>? onMapLongTap;
 
-  /// Called every time when the camera position on [YandexMap] is changed.
+  /// Called every time when the camera position on [YandexMapWeb] is changed.
   final CameraPositionCallback? onCameraPositionChanged;
 
-  /// Callback to be called when a user location layer icon elements have been added to [YandexMap].
+  /// Callback to be called when a user location layer icon elements have been added to [YandexMapWeb].
   ///
   /// Use this method if you want to change how users current position is displayed
   /// You can return [UserLocationView] with changed [UserLocationView.pin], [UserLocationView.arrow],
@@ -106,21 +106,21 @@ class YandexMap extends StatefulWidget {
   final TrafficChangedCallback? onTrafficChanged;
 
   /// Selects one of predefined map style modes optimized for particular use case(transit, driving, etc).
-  /// Resets json styles set with [YandexMapController.setMapStyle].
+  /// Resets json styles set with [YandexMapWebController.setMapStyle].
   final MapType mapType;
 
   /// Limits the number of visible basemap POIs
   final int? poiLimit;
 
-  /// Called every time a [YandexMap] geo object is tapped.
+  /// Called every time a [YandexMapWeb] geo object is tapped.
   final ObjectTapCallback? onObjectTap;
 
   @override
-  _YandexMapState createState() => _YandexMapState();
+  _YandexMapWebState createState() => _YandexMapWebState();
 }
 
-class _YandexMapState extends State<YandexMap> {
-  late _YandexMapOptions _yandexMapOptions;
+class _YandexMapWebState extends State<YandexMapWeb> {
+  late _YandexMapWebOptions _yandexMapWebOptions;
 
   /// Root object which contains all [MapObject] which were added to the map by user
   MapObjectCollection _mapObjectCollection = MapObjectCollection(
@@ -139,12 +139,12 @@ class _YandexMapState extends State<YandexMap> {
   /// This contains all objects that were created by any means
   List<MapObject> get _allMapObjects => _mapObjectCollection.mapObjects + _nonRootMapObjects;
 
-  final Completer<YandexMapController> _controller = Completer<YandexMapController>();
+  final Completer<YandexMapWebController> _controller = Completer<YandexMapWebController>();
 
   @override
   void initState() {
     super.initState();
-    _yandexMapOptions = _YandexMapOptions.fromWidget(widget);
+    _yandexMapOptions = _YandexMapWebOptions.fromWidget(widget);
     _mapObjectCollection = _mapObjectCollection.copyWith(mapObjects: widget.mapObjects);
   }
 
@@ -157,15 +157,15 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   @override
-  void didUpdateWidget(YandexMap oldWidget) {
+  void didUpdateWidget(YandexMapWeb oldWidget) {
     super.didUpdateWidget(oldWidget);
     _updateMapOptions();
     _updateMapObjects();
   }
 
   void _updateMapOptions() async {
-    final newOptions = _YandexMapOptions.fromWidget(widget);
-    final updates = _yandexMapOptions.mapUpdates(newOptions);
+    final newOptions = _YandexMapWebOptions.fromWidget(widget);
+    final updates = _yandexMapWebOptions.mapUpdates(newOptions);
 
     if (updates.isEmpty) {
       return;
@@ -175,7 +175,7 @@ class _YandexMapState extends State<YandexMap> {
 
     // ignore: unawaited_futures
     controller._updateMapOptions(updates);
-    _yandexMapOptions = newOptions;
+    _yandexMapWebOptions = newOptions;
   }
 
   void _updateMapObjects() async {
@@ -361,7 +361,7 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   Future<void> _onPlatformViewCreated(int id) async {
-    final controller = await YandexMapController._init(id, this);
+    final controller = await YandexMapWebController._init(id, this);
 
     _controller.complete(controller);
 
@@ -371,7 +371,7 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   Map<String, dynamic> _creationParams() {
-    final mapOptions = _yandexMapOptions.toJson();
+    final mapOptions = _yandexMapWebOptions.toJson();
     final mapObjects = MapObjectUpdates.from(
       {_mapObjectCollection.copyWith(mapObjects: [])},
       {_mapObjectCollection}
@@ -384,9 +384,9 @@ class _YandexMapState extends State<YandexMap> {
   }
 }
 
-/// Configuration options for the YandexMap native view.
-class _YandexMapOptions {
-  _YandexMapOptions.fromWidget(YandexMap map) :
+/// Configuration options for the YandexMapWeb native view.
+class _YandexMapWebOptions {
+  _YandexMapWebOptions.fromWidget(YandexMapWeb map) :
     tiltGesturesEnabled = map.tiltGesturesEnabled,
     zoomGesturesEnabled = map.zoomGesturesEnabled,
     rotateGesturesEnabled = map.rotateGesturesEnabled,
@@ -441,7 +441,7 @@ class _YandexMapOptions {
     };
   }
 
-  Map<String, dynamic> mapUpdates(_YandexMapOptions newOptions) {
+  Map<String, dynamic> mapUpdates(_YandexMapWebOptions newOptions) {
     final prevOptionsMap = toJson();
 
     return newOptions.toJson()..removeWhere((String key, dynamic value) => prevOptionsMap[key] == value);
