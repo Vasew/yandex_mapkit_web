@@ -10,12 +10,3 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-flutter:
-  plugin:
-    platforms:
-      android:
-        package: com.vasew.yandexmapkitweb
-        pluginClass: YandexMapkitWebPlugin
-      ios:
-        pluginClass: YandexMapkitWebPlugin
