@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// Defines a started search request
 class SearchSession {
