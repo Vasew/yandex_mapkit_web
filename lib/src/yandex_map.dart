@@ -157,7 +157,7 @@ class _YandexMapState extends State<YandexMap> {
   }
 
   @override
-  void didUpdateWidget(YandexMapWeb oldWidget) {
+  void didUpdateWidget(YandexMap oldWidget) {
     super.didUpdateWidget(oldWidget);
     _updateMapOptions();
     _updateMapObjects();
@@ -386,7 +386,7 @@ class _YandexMapState extends State<YandexMap> {
 
 /// Configuration options for the YandexMapWeb native view.
 class _YandexMapWebOptions {
-  _YandexMapWebOptions.fromWidget(YandexMapWeb map) :
+  _YandexMapOptions.fromWidget(YandexMap map) :
     tiltGesturesEnabled = map.tiltGesturesEnabled,
     zoomGesturesEnabled = map.zoomGesturesEnabled,
     rotateGesturesEnabled = map.rotateGesturesEnabled,
@@ -441,7 +441,7 @@ class _YandexMapWebOptions {
     };
   }
 
-  Map<String, dynamic> mapUpdates(_YandexMapWebOptions newOptions) {
+  Map<String, dynamic> mapUpdates(_YandexMapOptions newOptions) {
     final prevOptionsMap = toJson();
 
     return newOptions.toJson()..removeWhere((String key, dynamic value) => prevOptionsMap[key] == value);
