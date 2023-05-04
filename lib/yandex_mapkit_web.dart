@@ -9,6 +9,7 @@ import 'dart:ui' as ui;
 import 'dart:typed_data'; // ignore: unnecessary_import
 
 import 'package:collection/collection.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
