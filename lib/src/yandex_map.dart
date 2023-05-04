@@ -191,7 +191,6 @@ class _YandexMapState extends State<YandexMap> {
 
   @override
   Widget build(BuildContext context) {
-    if(kIsWeb) {
       var centerPoint;
       var arrayWeb = '';
       if(widget.mapObjectsWeb.isNotEmpty){
@@ -357,7 +356,6 @@ class _YandexMapState extends State<YandexMap> {
           registerYandexMapId,
               (int viewId) => frame);
       return HtmlElementView(viewType: registerYandexMapId);
-    }
   }
 
   Future<void> _onPlatformViewCreated(int id) async {
