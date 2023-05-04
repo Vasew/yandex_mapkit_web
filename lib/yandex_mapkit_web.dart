@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-
+/*
 part 'src/types/bitmap_descriptor.dart';
 part 'src/types/callbacks.dart';
 part 'src/types/camera_position.dart';
@@ -69,8 +69,9 @@ part 'src/types/user_location_view.dart';
 part 'src/types/user_location_anchor.dart';
 part 'src/types/visible_region.dart';
 part 'src/yandex_bicycle.dart';
-part 'src/yandex_driving.dart';
+part 'src/yandex_driving.dart';*/
 part 'src/yandex_map.dart';
-part 'src/yandex_map_controller.dart';
+/*part 'src/yandex_map_controller.dart';
 part 'src/yandex_search.dart';
 part 'src/yandex_suggest.dart';
+*/
