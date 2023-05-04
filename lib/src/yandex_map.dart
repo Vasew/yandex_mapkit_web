@@ -1,16 +1,4 @@
-part of yandex_mapkit;
-
-/// Android specific settings for [YandexMap].
-class AndroidYandexMap {
-  /// Whether to render [YandexMap] with a [AndroidViewSurface] to build the Google Maps widget.
-  ///
-  /// This implementation uses hybrid composition to render the YandexMap Widget on Android.
-  /// This comes at the cost of some performance on Android versions below 10.
-  /// See https://flutter.dev/docs/development/platform-integration/platform-views#performance for more information.
-  ///
-  /// Defaults to true.
-  static bool useAndroidViewSurface = true;
-}
+part of yandex_mapkit_web;
 
 /// A widget which displays a map using Yandex maps service.
 class YandexMap extends StatefulWidget {
@@ -203,41 +191,7 @@ class _YandexMapState extends State<YandexMap> {
 
   @override
   Widget build(BuildContext context) {
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      if (AndroidYandexMap.useAndroidViewSurface) {
-        return PlatformViewLink(
-          viewType: YandexMap._viewType,
-          surfaceFactory: (BuildContext context, PlatformViewController controller) {
-            return AndroidViewSurface(
-              controller: controller as AndroidViewController,
-              gestureRecognizers: widget.gestureRecognizers,
-              hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-            );
-          },
-          onCreatePlatformView: (PlatformViewCreationParams params) {
-            return PlatformViewsService.initExpensiveAndroidView(
-              id: params.id,
-              viewType: YandexMap._viewType,
-              layoutDirection: TextDirection.ltr,
-              creationParams: _creationParams(),
-              creationParamsCodec: StandardMessageCodec(),
-              onFocus: () => params.onFocusChanged(true),
-            )
-            ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-            ..addOnPlatformViewCreatedListener(_onPlatformViewCreated)
-            ..create();
-          }
-        );
-      } else {
-        return AndroidView(
-          viewType: YandexMap._viewType,
-          onPlatformViewCreated: _onPlatformViewCreated,
-          gestureRecognizers: widget.gestureRecognizers,
-          creationParamsCodec: StandardMessageCodec(),
-          creationParams: _creationParams(),
-        );
-      }
-    } else if(kIsWeb) {
+    if(kIsWeb) {
       var centerPoint;
       var arrayWeb = '';
       if(widget.mapObjectsWeb.isNotEmpty){
@@ -403,14 +357,6 @@ class _YandexMapState extends State<YandexMap> {
           registerYandexMapId,
               (int viewId) => frame);
       return HtmlElementView(viewType: registerYandexMapId);
-    } else {
-      return UiKitView(
-        viewType: YandexMap._viewType,
-        onPlatformViewCreated: _onPlatformViewCreated,
-        gestureRecognizers: widget.gestureRecognizers,
-        creationParamsCodec: StandardMessageCodec(),
-        creationParams: _creationParams(),
-      );
     }
   }
 
