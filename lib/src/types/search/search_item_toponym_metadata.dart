@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// Additional data for toponym objects.
 class SearchItemToponymMetadata extends Equatable {
