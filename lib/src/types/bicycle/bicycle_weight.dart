@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// Quantitative characteristics of any segment of the route.
 class BicycleWeight extends Equatable {
