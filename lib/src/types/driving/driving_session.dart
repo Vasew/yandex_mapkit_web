@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 class DrivingSession {
   static const String _methodChannelName = 'yandex_mapkit/yandex_driving_session_';
