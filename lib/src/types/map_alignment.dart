@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// Map logo alignment.
 class MapAlignment extends Equatable {
