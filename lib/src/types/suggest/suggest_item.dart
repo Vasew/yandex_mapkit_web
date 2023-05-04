@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// A single suggested item.
 class SuggestItem extends Equatable {
