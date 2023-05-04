@@ -1,9 +1,9 @@
 part of yandex_mapkit_web;
 
 /// A widget which displays a map using Yandex maps service.
-class YandexMap extends StatefulWidget {
+class YandexMapWeb extends StatefulWidget {
   /// A `Widget` for displaying Yandex Map Web
-  const YandexMap({
+  const YandexMapWeb({
     Key? key,
     this.gestureRecognizers = const <Factory<OneSequenceGestureRecognizer>>{},
     this.mapObjects = const [],
