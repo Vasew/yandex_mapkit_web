@@ -1,9 +1,9 @@
 part of yandex_mapkit_web;
 
 /// A widget which displays a map using Yandex maps service.
-class YandexMapWeb extends StatefulWidget {
+class YandexMap extends StatefulWidget {
   /// A `Widget` for displaying Yandex Map Web
-  const YandexMapWeb({
+  const YandexMap({
     Key? key,
     this.gestureRecognizers = const <Factory<OneSequenceGestureRecognizer>>{},
     this.mapObjects = const [],
@@ -116,11 +116,11 @@ class YandexMapWeb extends StatefulWidget {
   final ObjectTapCallback? onObjectTap;
 
   @override
-  _YandexMapWebState createState() => _YandexMapWebState();
+  _YandexMapState createState() => _YandexMapState();
 }
 
-class _YandexMapWebState extends State<YandexMapWeb> {
-  late _YandexMapWebOptions _yandexMapWebOptions;
+class _YandexMapState extends State<YandexMap> {
+  late _YandexMapOptions _yandexMapOptions;
 
   /// Root object which contains all [MapObject] which were added to the map by user
   MapObjectCollection _mapObjectCollection = MapObjectCollection(
@@ -139,12 +139,12 @@ class _YandexMapWebState extends State<YandexMapWeb> {
   /// This contains all objects that were created by any means
   List<MapObject> get _allMapObjects => _mapObjectCollection.mapObjects + _nonRootMapObjects;
 
-  final Completer<YandexMapWebController> _controller = Completer<YandexMapWebController>();
+  final Completer<YandexMapController> _controller = Completer<YandexMapController>();
 
   @override
   void initState() {
     super.initState();
-    _yandexMapOptions = _YandexMapWebOptions.fromWidget(widget);
+    _yandexMapOptions = _YandexMapOptions.fromWidget(widget);
     _mapObjectCollection = _mapObjectCollection.copyWith(mapObjects: widget.mapObjects);
   }
 
