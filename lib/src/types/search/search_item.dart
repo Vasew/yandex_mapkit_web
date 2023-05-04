@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_web;
 
 /// Found geo object item
 class SearchItem extends Equatable {
