@@ -71,8 +71,7 @@ part 'src/types/user_location_anchor.dart';
 part 'src/types/visible_region.dart';
 part 'src/yandex_bicycle.dart';
 part 'src/yandex_driving.dart';
-part 'src/yandex_map.dart';
+part 'src/yandex_map_web.dart';
 part 'src/yandex_map_controller.dart';
 part 'src/yandex_search.dart';
 part 'src/yandex_suggest.dart';
-
